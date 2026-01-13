@@ -337,6 +337,8 @@ async function buildWeb() {
     ...process.env,
     DISABLE_ESLINT_PLUGIN: 'true',
     VITE_APP_VERSION: version,
+    // 设置 Node.js 内存限制为 1.5GB,适用于 2GB 内存服务器
+    NODE_OPTIONS: '--max-old-space-size=1536',
   };
 
   const buildResult = exec('npm run build', { cwd: config.webDir, env: buildEnv });
